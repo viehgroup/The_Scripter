@@ -15,7 +15,7 @@ if they are at some intermediate level.
 ## INSTALLATION PROCESS
   
 **Step 1:**     Clone the Script from the given Github Repository
-**Command:**    git clone https://github.com/manitorpotterk/The_Scripter
+**Command:**    git clone https://github.com/viehgroup/The_Scripter
 
 **Step 2:**     cd to the scripter Directory
 **Command:**  cd The_Scripter/
