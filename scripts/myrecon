@@ -1,0 +1,44 @@
+#!/bin/bash
+
+echo "Enter the IP address of the machine you want to Scan"
+read ip
+mkdir $ip
+echo "=============================================================================================="
+echo "                                       Quick Nmap Scan                                        "
+echo "=============================================================================================="
+sudo nmap -Pn -sS -T4 $ip -oN $ip/quick_nmap_scan
+
+port=[$(grep open $ip/quick_nmap_scan | cut -d" " -f1 | cut -d "/" -f1 | paste -s -d ',')]
+
+echo "=============================================================================================="
+echo "                                    Quick Script Nmap Scan                                    "
+echo "=============================================================================================="
+
+sudo nmap -Pn -sS -T4 $ip -p$port -A -oN $ip/script_nmap_scan
+
+allports=$(grep open $ip/quick_nmap_scan | cut -d" " -f1 |cut -d "/" -f1 |paste -s -d ' ')
+
+for i in $(echo "${allports}")
+do
+	if [ $i = 80 ]
+	then
+		echo "=================================================================="
+		echo "              Nikto Scan is running in background                 "
+	    	echo "=================================================================="	
+		nikto -Format txt -o $ip/nikto_scan.txt -host $ip &
+	fi
+done
+
+echo "=============================================================================================="
+echo "                                      Full Nmap Scan                                          "
+echo "=============================================================================================="
+
+sudo nmap -Pn -v -sS -T4 -p- $ip -oN $ip/full_nmap_scan
+
+ports=[$(grep open $ip/full_nmap_scan | cut -d " " -f1 | cut -d "/" -f1 | paste -s -d ',')]
+
+echo "=============================================================================================="
+echo "                                    Full Script  Nmap Scan                                    "
+echo "=============================================================================================="
+
+sudo nmap -Pn -sS -T4 -A -p$ports $ip -oN $ip/full_script_scan
