@@ -19,10 +19,11 @@ echo '
               (| (.)(.) |)
 .-----------.OOOo--()--oOOO.----------.
 |                                     |
-|    Created by Team :- VIEH GROUP    |
+|    Created by Team :- VIEH Group    |
 | ----------------------------------- |
 |    Visit us :- www.viehgroup.com    |
 | ----------------------------------- |
+|       VIEH Group (@viehgroup)       |
 |    Kshitiz Raj (@manitorpotterk)    |
 |    Yogeshwarram Godara (@0xyogi)    |
 |  Rahul Singh Bisht (@merahulbisht1) |
